@@ -1,0 +1,53 @@
+# Godot-specific files
+.import/
+export.cfg
+export_presets.cfg
+
+# Godot editor settings (user-specific)
+.editor_settings-*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and crash reports
+*.log
+*.tmp
+*.crash
+
+# Compiled scripts (if applicable)
+*.mono.dll
+*.mono.pdb
+
+# Godot Mono (C#) specific files
+.mono/
+*.csproj
+*.sln
+*.userprefs
+
+# Godot Android export
+android/build/
+
+# Godot iOS export
+ios/build/
+
+# Godot HTML5 export
+html5/build/
+
+# Backup files
+*.bak
+*.old
+*.save
+*.tmp
+
+# Other temporary files
+*.swp
+*.swo
+*.~lock.*
+
+# Godot cache files
+.cache/
+
+# Exported builds
+/builds/
