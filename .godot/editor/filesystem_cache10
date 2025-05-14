@@ -1,0 +1,15 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1747242129
+::res://assets/::1747241638
+::res://assets/fonts/::1747241638
+::res://assets/sprites/::1747241638
+::res://assets/ui/::1747241638
+::res://data/::1747242108
+dungeons.gd::GDScript/GDScript::1120102486257910358::1747241667::0::1::::<>Node<><>0<>0<><>::
+enemies.gd::GDScript/GDScript::8304577856453100704::1747241659::0::1::::<>Node<><>0<>0<><>::
+items.gd::GDScript/GDScript::4273058472896382067::1747241964::0::1::::<>Node<><>0<>0<><>::
+::res://scenes/::1747241687
+Main.tscn::PackedScene::4611798015677534604::1747242140::0::1::::<><><>0<>0<><>::uid://cmayqeqe4go83::::res://scripts/game_manager.gd<>uid://clcr7niwa4ydj::::res://scripts/ui_manager.gd
+::res://scripts/::1747242108
+game_manager.gd::GDScript/GDScript::5616593506602484022::1747241681::0::1::::<>Node<><>0<>0<><>::
+ui_manager.gd::GDScript/GDScript::5550137433357398647::1747241752::0::1::::<>Control<><>0<>0<><>::

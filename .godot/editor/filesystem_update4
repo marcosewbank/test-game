@@ -1,0 +1,5 @@
+res://scenes/Main.tscn
+res://scripts/game_manager.gd
+res://data/items.gd
+res://scripts/ui_manager.gd
+res://scripts/main.gd

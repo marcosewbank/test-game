@@ -1,0 +1,181 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6x8v0j6y5n3q"]
+
+[ext_resource type="PackedScene" path="res://scenes/dungeon_log.tscn" id="1_d3f4v"]
+[ext_resource type="Script" uid="uid://do6fqmsfh351y" path="res://scripts/main.gd" id="1_m4n2p"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m4n2p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="LeftPanel" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CharacterPanel" type="Panel" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/CharacterPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Character Stats"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StatsLabel" type="Label" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Health: 100/100
+Level: 1
+Experience: 0
+Gold: 0"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Equipment"
+
+[node name="EquipmentLabel" type="Label" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Weapon: None
+Gear: None"
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="InventoryLabel" type="Label" parent="HBoxContainer/LeftPanel/CharacterPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Empty"
+
+[node name="DungeonPanel" type="Panel" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/DungeonPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/DungeonPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/LeftPanel/DungeonPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Available Dungeons"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/LeftPanel/DungeonPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DungeonList" type="ItemList" parent="HBoxContainer/LeftPanel/DungeonPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartDungeonButton" type="Button" parent="HBoxContainer/LeftPanel/DungeonPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "Start Dungeon"
+
+[node name="DungeonProgressPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DungeonProgressPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DungeonProgressPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="HBoxContainer/DungeonProgressPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Dungeon Progress"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/DungeonProgressPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DungeonInfoLabel" type="Label" parent="HBoxContainer/DungeonProgressPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No dungeon in progress"
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/DungeonProgressPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+max_value = 1.0
+
+[node name="CurrentEnemyLabel" type="Label" parent="HBoxContainer/DungeonProgressPanel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "No enemy encountered"
+
+[node name="DungeonLog" parent="HBoxContainer" instance=ExtResource("1_d3f4v")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[connection signal="item_selected" from="HBoxContainer/LeftPanel/DungeonPanel/MarginContainer/VBoxContainer/DungeonList" to="." method="_on_dungeon_list_item_selected"]
+[connection signal="pressed" from="HBoxContainer/LeftPanel/DungeonPanel/MarginContainer/VBoxContainer/StartDungeonButton" to="." method="_on_start_dungeon_button_pressed"]
