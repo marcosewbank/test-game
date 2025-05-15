@@ -85,11 +85,6 @@ func _process_dungeon() -> void:
 	# Emit progress update
 	dungeon_progress_updated.emit(dungeon_progress)
 	
-	# Log progress milestones
-	var progress_percent = int(dungeon_progress * 100)
-	if progress_percent % 25 == 0 and progress_percent <= 100:  # Log every 25% progress
-		add_log_entry("Dungeon exploration: %d%% complete" % progress_percent)
-	
 	# Check for enemy encounters
 	if current_enemy == null and randf() < 0.1:  # 10% chance per frame
 		_encounter_enemy()
@@ -99,7 +94,7 @@ func _process_dungeon() -> void:
 		_complete_dungeon()
 	else:
 		# Continue processing the dungeon
-		yield(get_tree().create_timer(1.0 / 60.0), "timeout")  # Simulate frame delay
+		await get_tree().create_timer(1.0 / 60.0).timeout  # Simulate frame delay
 		_process_dungeon()
 
 func _encounter_enemy() -> void:
@@ -107,6 +102,34 @@ func _encounter_enemy() -> void:
 	current_enemy = EnemiesData.enemies[enemy_id]
 	add_log_entry("Encountered a %s!" % current_enemy.name)
 	enemy_encountered.emit(current_enemy)
+	_start_combat()
+
+func _start_combat() -> void:
+	if current_enemy == null:
+		return
+	
+	add_log_entry("Combat started with %s!" % current_enemy.name)
+	
+	while current_enemy.health > 0 and player.health > 0:
+		# Player attacks the enemy
+		var player_damage = randi_range(5, 10)  # Example damage range
+		current_enemy.health -= player_damage
+		add_log_entry("You dealt %d damage to %s!" % [player_damage, current_enemy.name])
+		
+		if current_enemy.health <= 0:
+			add_log_entry("You defeated %s!" % current_enemy.name)
+			defeat_enemy()
+			return  # Exit combat after defeating the enemy
+		
+		# Enemy attacks the player
+		var enemy_damage = randi_range(3, 8)  # Example damage range
+		player.health -= enemy_damage
+		add_log_entry("%s dealt %d damage to you!" % [current_enemy.name, enemy_damage])
+		
+		if player.health <= 0:
+			add_log_entry("You were defeated by %s!" % current_enemy.name)
+			_end_dungeon_failure()
+			return  # Exit combat after the player is defeated
 
 func _complete_dungeon() -> void:
 	is_in_dungeon = false
@@ -143,7 +166,7 @@ func use_item(item_id: String) -> void:
 func defeat_enemy() -> void:
 	if current_enemy == null:
 		return
-		
+	
 	# Calculate loot based on loot table probabilities
 	var dropped_item = null
 	for item_id in current_enemy.loot_table:
@@ -175,7 +198,14 @@ func defeat_enemy() -> void:
 	add_log_entry(loot_message)
 	enemy_defeated.emit(current_enemy, loot)
 	player_stats_updated.emit()
-	current_enemy = null 
+	
+	# Reset current_enemy to allow new encounters
+	current_enemy = null
+
+func _end_dungeon_failure() -> void:
+	is_in_dungeon = false
+	add_log_entry("You failed to complete the dungeon. Better luck next time!")
+	# Optionally, reset dungeon state or handle failure consequences
 
 func _update_inventory() -> void:
 	var inventory_text = ""
